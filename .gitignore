@@ -64,4 +64,3 @@ node_modules/
 Thumbs.db
 
 alembic.ini
-alembic/**
