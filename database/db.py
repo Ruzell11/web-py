@@ -1,11 +1,8 @@
 import sqlalchemy
 import databases
+from sqlalchemy.ext.declarative import declarative_base
+from constants.index import DATABASE_URL
 
-SERVER_NAME = "localhost";
-USER_NAME = "root";
-PASSWORD = "";
-DB_NAME = "python_database";
-DATABASE_URL = f"mysql://{USER_NAME}:{PASSWORD}@{SERVER_NAME}/{DB_NAME}"
 
 
 def startDatabase():
@@ -19,4 +16,5 @@ def startDatabase():
     
     return database
 
+Base = declarative_base()
 

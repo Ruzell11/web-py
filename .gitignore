@@ -1,0 +1,67 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pyz
+*.pyzw
+
+# IDEs and Editors
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# Virtual Environments
+venv/
+env/
+ENV/
+*.env
+
+# Compiled/Generated Files
+*.pyc
+*.pyo
+*.class
+*.pyd
+*.so
+*.lib
+*.dll
+*.exe
+*.out
+*.log
+*.swp
+*.swo
+*.dat
+
+# Build/Installation
+build/
+dist/
+*.egg-info/
+*.egg
+*.egg-info/
+
+# Package Management
+pip-lock.txt
+pipenv.lock
+Pipfile.lock
+
+# Dependency Directories
+lib/
+vendor/
+node_modules/
+
+# Data and Database
+*.db
+*.sqlite
+
+# Logs and Temporary Files
+*.log
+*.tmp
+*.temp
+
+# Other
+.DS_Store
+Thumbs.db
+
+alembic.ini
+alembic/**
