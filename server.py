@@ -4,8 +4,6 @@ from routes.index import router as generalRoutes
 
 app = FastAPI()
 
-
-
 @app.on_event("startup")
 async def startup():
     await database.connect()
