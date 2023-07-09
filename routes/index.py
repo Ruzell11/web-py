@@ -7,7 +7,7 @@ from dependecies.db_session import get_db_session
 
 router = APIRouter()
 
-@router.post('/register' , response_model=UserCreate)
+@router.post('/register')
 async def register_user(user:UserCreate , db:Session = Depends(get_db_session)):
    user_exist = index_user_by_email(user.email , db)
    if user_exist:
@@ -20,8 +20,11 @@ async def user_list(db:Session = Depends(get_db_session)):
 
 @router.get('/user')
 async def get_single_user(email:str, db:Session = Depends(get_db_session)):
-   return index_user_by_email(email , db)
+   user_exist = index_user_by_email(email , db)
+   if not user_exist:
+      raise HTTPException(status_code=404, detail="User not found")
+   return user_exist
 
 @router.patch('/user-update')
-async def update_user( field:UserUpdate , db:Session = Depends(get_db_session)):
+async def update_user(field:UserUpdate , db:Session = Depends(get_db_session)):
      return update_user_by_email(field , db)

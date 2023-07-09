@@ -24,12 +24,8 @@ def index_user(db:Session , skip: int = 0 , limit: int=100):
                 }
         
 def index_user_by_email(user_email:str , db:Session ):
-        user = db.query(User).filter(User.email == user_email).first()
+      return db.query(User).filter(User.email == user_email).first()
         
-        if not user:
-                raise HTTPException(status_code=404, detail="User not found")
-        
-        return user
    
 
 def update_user_by_email(fieldForUpdate: UserUpdate, db: Session):
