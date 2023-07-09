@@ -1,9 +1,9 @@
 from fastapi import FastAPI
-from database.db import startDatabase
+from database.db import database
 from routes.index import router as generalRoutes
 
 app = FastAPI()
-database = startDatabase()
+
 
 
 @app.on_event("startup")
@@ -19,4 +19,5 @@ async def startup():
 async def shutdown():
     await database.disconnect()
 
-app.include_router(generalRoutes)
+
+app.include_router(generalRoutes , prefix="/api")
