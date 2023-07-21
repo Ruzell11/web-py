@@ -3,6 +3,11 @@ from schemas import  UserCreate , UserUpdate
 from models.User import User
 from sqlalchemy.orm import Session
 from fastapi import HTTPException
+from dependecies.redis_session import REDIS_HOST , REDIS_PORT
+import redis
+
+pool = redis.ConnectionPool(host=REDIS_HOST , port=REDIS_PORT)
+redisSetter = redis.Redis(connection_pool=pool)
 
 
 def store_user(user:UserCreate, db:Session):
@@ -11,6 +16,7 @@ def store_user(user:UserCreate, db:Session):
         db.add(db_user)
         db.commit()
         db.refresh(db_user)
+        redisSetter.lpush("register1" , user.email)
         
         return {
                 "message":"User created successfully",
